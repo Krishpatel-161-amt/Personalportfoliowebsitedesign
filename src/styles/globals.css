@@ -187,3 +187,10 @@
 html {
   font-size: var(--font-size);
 }
+
+@layer utilities {
+  .clip-diagonal {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  }
+}
+

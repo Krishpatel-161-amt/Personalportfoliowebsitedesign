@@ -44,7 +44,7 @@ export function Contact() {
     {
       name: "Email",
       icon: <Mail className="h-5 w-5" />,
-      url: "mailto:patelkrish@example.com",
+      url: "mailto:24amtics161@gmail.com",
       color: "hover:bg-[#5FFBF1] hover:text-[#1F1F23]",
     },
   ];
@@ -53,16 +53,10 @@ export function Contact() {
     {
       icon: <Mail className="h-5 w-5" />,
       label: "Email",
-      value: "patelkrish@example.com",
+      value: "24amtics161@gmail.com",
       gradient: "from-[#007BFF] to-[#5FFBF1]",
     },
-    {
-      icon: <Phone className="h-5 w-5" />,
-      label: "Phone",
-      value: "+91 XXXXX XXXXX",
-      gradient: "from-purple-600 to-pink-600",
-    },
-    {
+        {
       icon: <MapPin className="h-5 w-5" />,
       label: "Location",
       value: "Gujarat, India",
@@ -106,7 +100,7 @@ export function Contact() {
                   <Label htmlFor="name">Your Name</Label>
                   <Input
                     id="name"
-                    placeholder="John Doe"
+                    placeholder="Name"
                     value={formData.name}
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
@@ -121,7 +115,7 @@ export function Contact() {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="xyz@example.com"
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })

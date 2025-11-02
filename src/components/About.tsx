@@ -1,14 +1,13 @@
 import { Card } from "./ui/card";
 import { GraduationCap, Briefcase, Target } from "lucide-react";
 import { motion } from "motion/react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function About() {
   const stats = [
     {
       icon: <GraduationCap className="h-6 w-6" />,
       label: "Education",
-      value: "B.Tech Student",
+      value: "B.Tech at Uka Tarsadia University",
       color: "from-[#007BFF] to-[#0056b3]",
     },
     {
@@ -26,119 +25,108 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="relative overflow-hidden">
+      {/* Background Layer */}
+      <div className="absolute inset-0 flex flex-col md:flex-row">
+        <div className="w-full md:w-1/2 bg-gradient-to-br from-[#007BFF] to-[#7C3AED] clip-diagonal"></div>
+        <div className="w-full md:w-1/2 bg-background"></div>
+      </div>
+
+      {/* Content Layer */}
+      <div className="relative z-10 max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center md:items-stretch gap-12">
+        {/* Left: Image & Name */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          transition={{ duration: 0.8 }}
+          className="w-full md:w-1/2 flex flex-col items-center justify-center text-white text-center md:text-left"
         >
-          <h2 className="mb-4">
-            <span className="bg-gradient-to-r from-[#007BFF] via-[#7C3AED] to-[#5FFBF1] bg-clip-text text-transparent">
+          <div className="relative mb-8">
+            <div className="w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden ring-8 ring-white/20 shadow-2xl">
+              <img
+                src="https://i.ibb.co/Jw1jBKRd/jk.jpg"
+                alt="Patel Krish"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+              <GraduationCap className="h-8 w-8 text-white" />
+            </div>
+          </div>
+
+          <h3 className="text-4xl font-bold mb-2">Patel Krish</h3>
+          <p className="text-lg font-medium opacity-90">UI/UX Designer</p>
+          <div className="mt-4 flex justify-center md:justify-start gap-4 text-sm">
+            <a href="#" className="hover:underline">LinkedIn</a>
+            <span>•</span>
+            <a href="#" className="hover:underline">Behance</a>
+            <span>•</span>
+            <a href="#" className="hover:underline">GitHub</a>
+          </div>
+        </motion.div>
+
+        {/* Right: About Text */}
+        <motion.div
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="w-full md:w-1/2 bg-white/80 backdrop-blur-xl p-10 rounded-2xl shadow-lg"
+        >
+          <h2 className="mb-6">
+            <span className="bg-gradient-to-r from-[#007BFF] via-[#7C3AED] to-[#5FFBF1] bg-clip-text text-transparent text-4xl font-bold">
               About Me
             </span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-[#007BFF] to-[#7C3AED] rounded-full mx-auto"></div>
-        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Image Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <ImageWithFallback
-                src="https://i.ibb.co/PvFtQPQn/jk.jpg"
-                alt="UI/UX Designer Workspace"
-                className="w-full h-[400px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#007BFF]/30 to-[#7C3AED]/30"></div>
-            </div>
+          <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+            Hello! I'm Patel Krish, a UI/UX Designer with beginner-level experience and a solid grounding
+            in technology and design. My focus is crafting intuitive, delightful user experiences that
+            balance functionality with aesthetics.
+          </p>
 
-            {/* Floating card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="absolute -bottom-6 -right-6 bg-card border border-border rounded-xl p-4 shadow-xl"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#007BFF] to-[#7C3AED] flex items-center justify-center">
-                  <GraduationCap className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <div className="text-muted-foreground">
-                    Studying at
+          <div className="space-y-3 bg-card/50 p-6 rounded-xl border border-border/50">
+            <h4 className="text-xl font-medium flex items-center gap-2">
+              <GraduationCap className="h-5 w-5 text-primary" />
+              Education
+            </h4>
+            <p className="text-foreground">
+              Currently pursuing a <span className="font-semibold">B.Tech degree</span> at{" "}
+              <span className="font-semibold text-primary">Uka Tarsadia University</span> (2024–2028).
+            </p>
+          </div>
+
+          <p className="text-muted-foreground text-lg leading-relaxed mt-6">
+            I love bringing designs/ideas to life by building websites with HTML, CSS, and JavaScript.
+          </p>
+
+          {/* Stats */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: 0.1 * index + 0.2,
+                  duration: 0.6,
+                }}
+              >
+                <Card className="p-6 hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30 group">
+                  <div
+                    className={`w-14 h-14 rounded-xl bg-gradient-to-r ${stat.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform`}
+                  >
+                    {stat.icon}
                   </div>
-                  <div>Uka Tarsadia</div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Content Section */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <div className="space-y-4">
-              <h3>Hello! I'm Patel Krish</h3>
-              <p className="text-muted-foreground">
-                I'm Patel Krish, a UI/UX Designer with
-                beginner-level experience and a background in
-                technology and design. Currently studying toward
-                a B.Tech degree at Uka Tarsadia University
-                (2024–2025). I focus on creating intuitive,
-                engaging interfaces.
-              </p>
-              <p className="text-muted-foreground">
-                My passion lies in bridging the gap between
-                users and technology through thoughtful design.
-                I believe that great design is not just about
-                aesthetics, but about solving real problems and
-                creating meaningful experiences.
-              </p>
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    delay: 0.1 * index,
-                    duration: 0.6,
-                  }}
-                >
-                  <Card className="p-4 hover:shadow-lg transition-shadow border-border/50">
-                    <div
-                      className={`w-12 h-12 rounded-lg bg-gradient-to-r ${stat.color} flex items-center justify-center text-white mb-3`}
-                    >
-                      {stat.icon}
-                    </div>
-                    <div className="text-muted-foreground mb-1">
-                      {stat.label}
-                    </div>
-                    <div>{stat.value}</div>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+                  <div className="text-muted-foreground text-sm">{stat.label}</div>
+                  <div className="text-lg font-medium">{stat.value}</div>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
